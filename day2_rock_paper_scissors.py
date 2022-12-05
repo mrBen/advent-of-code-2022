@@ -12,7 +12,14 @@ def main(strategy: str) -> None:
     for turn in strategy.splitlines():
         opponent, you = parse(turn)
         score += outcome(opponent, you) + you.value
+    print("Part One:")
+    print(score)
 
+    score = 0
+    for turn in strategy.splitlines():
+        opponent, you = parse2(turn)
+        score += outcome(opponent, you) + you.value
+    print("Part Two:")
     print(score)
 
 
@@ -20,6 +27,17 @@ def parse(turn: str) -> tuple[Shape, Shape]:
     first, second = turn.split()
     opponent = {"A": Shape.ROCK, "B": Shape.PAPPER, "C": Shape.SCISSORS}[first]
     you = {"X": Shape.ROCK, "Y": Shape.PAPPER, "Z": Shape.SCISSORS}[second]
+    return opponent, you
+
+
+def parse2(turn: str) -> tuple[Shape, Shape]:
+    first, second = turn.split()
+    opponent = {"A": Shape.ROCK, "B": Shape.PAPPER, "C": Shape.SCISSORS}[first]
+    you = [
+        {"X": Shape.SCISSORS, "Y": Shape.ROCK, "Z": Shape.PAPPER}[second],
+        {"X": Shape.ROCK, "Y": Shape.PAPPER, "Z": Shape.SCISSORS}[second],
+        {"X": Shape.PAPPER, "Y": Shape.SCISSORS, "Z": Shape.ROCK}[second],
+    ][opponent.value - 1]
     return opponent, you
 
 
