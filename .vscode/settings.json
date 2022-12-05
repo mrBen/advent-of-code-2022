@@ -1,0 +1,28 @@
+{
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.linting.mypyArgs": [
+    // VS Code default
+    //   "--follow-imports=silent",
+    //   "--ignore-missing-imports",
+    "--show-column-numbers",
+    // https://blog.wolt.com/engineering/2021/09/30/professional-grade-mypy-configuration/
+    "--disallow-untyped-defs",
+    "--disallow-any-unimported",
+    "--no-implicit-optional",
+    "--check-untyped-defs",
+    "--warn-return-any",
+    "--warn-unused-ignores",
+    "--show-error-codes"
+  ],
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintArgs": [
+    "--disable=C0114,C0115,C0116", // missing-*-docstring
+    // black
+    "--max-line-length=88",
+    // https://google.github.io/styleguide/pyguide.html
+    // "--variable-rgx=^[a-z][a-z0-9_]*$",
+    // "--argument-rgx=^[a-z][a-z0-9_]*$"
+  ],
+  "python.linting.pylintEnabled": true,
+}
