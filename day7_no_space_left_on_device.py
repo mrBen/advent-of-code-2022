@@ -1,5 +1,6 @@
 class Dir:
-    def __init__(self) -> None:
+    def __init__(self, parent) -> None:
+        self.parent = parent
         self.dirs: dict[str, Dir] = {}
         self.files: dict[str, File] = {}
 
@@ -9,30 +10,38 @@ class Dir:
 
 
 class File:
-    def __init__(self, size: int) -> None:
+    def __init__(self, size: int, parent: Dir) -> None:
         self.size = size
+        self.parent = parent
 
 
 def main(terminal: str) -> None:
     root: Dir | None = None
     cwd: Dir | None = None
+    dirs: list[Dir] = []
     for line in terminal.splitlines():
         if line[0] == "$":
             cmd, *args = line[1:].split()
             if cmd == "cd":
                 if root is None:
-                    root = Dir()
+                    root = Dir(None)
+                    dirs.append(root)
                     cwd = root
                 else:
-                    # TODO: cd ..
-                    cwd = cwd.dirs[args[0]]
+                    if args[0] == "..":
+                        cwd = cwd.parent
+                    else:
+                        cwd = cwd.dirs[args[0]]
         else:
             size, name = line.split()
             try:
-                cwd.files[name] = File(int(size))
+                cwd.files[name] = File(int(size), cwd)
             except ValueError:
-                cwd.dirs[name] = Dir()
-    print("hello")
+                dir = Dir(cwd)
+                dirs.append(dir)
+                cwd.dirs[name] = dir
+
+    print(sum(dir.size for dir in dirs if dir.size <= 100000))
 
 
 if __name__ == "__main__":
