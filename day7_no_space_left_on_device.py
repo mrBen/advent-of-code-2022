@@ -41,7 +41,11 @@ def main(terminal: str) -> None:
                 dirs.append(dir)
                 cwd.dirs[name] = dir
 
-    print(sum(dir.size for dir in dirs if dir.size <= 100000))
+    print("Part One:")
+    print(sum(dir.size for dir in dirs if dir.size <= 100_000))
+
+    print("Part Two:")
+    print(min(dir.size for dir in dirs if root.size - dir.size <= 40_000_000))
 
 
 if __name__ == "__main__":
