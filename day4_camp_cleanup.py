@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 def main(assignments: str) -> None:
     count = 0
     for pair in assignments.splitlines():

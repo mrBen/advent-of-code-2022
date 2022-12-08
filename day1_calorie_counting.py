@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 def main(the_list: str) -> None:
     calories = [0]
     for item in the_list.splitlines():

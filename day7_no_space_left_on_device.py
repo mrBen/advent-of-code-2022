@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+from typing import Optional
+
+
 class Dir:
     def __init__(self, parent) -> None:
         self.parent = parent
@@ -16,8 +21,8 @@ class File:
 
 
 def main(terminal: str) -> None:
-    root: Dir | None = None
-    cwd: Dir | None = None
+    root: Optional[Dir] = None
+    cwd: Optional[Dir] = None
     dirs: list[Dir] = []
     for line in terminal.splitlines():
         if line[0] == "$":

@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 def main(plan: str) -> None:
     drawing, rearrangement = parse_plan(plan)
     stacks = stacks_from_drawing(drawing)

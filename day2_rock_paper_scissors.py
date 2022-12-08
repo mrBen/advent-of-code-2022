@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from enum import Enum
 
 
@@ -44,13 +46,11 @@ def parse2(turn: str) -> tuple[Shape, Shape]:
 def outcome(opponent: Shape, you: Shape) -> int:
     if opponent == you:
         return 3
-    match opponent:
-        case Shape.ROCK:
-            return 6 if you == Shape.PAPPER else 0
-        case Shape.PAPPER:
-            return 6 if you == Shape.SCISSORS else 0
-        case Shape.SCISSORS:
-            return 6 if you == Shape.ROCK else 0
+    return [
+        6 if you == Shape.PAPPER else 0,  # opponent = Shape.ROCK
+        6 if you == Shape.SCISSORS else 0,  # opponent = Shape.PAPPER
+        6 if you == Shape.ROCK else 0,  # opponent = Shape.SCISSORS
+    ][opponent.value - 1]
 
 
 if __name__ == "__main__":
