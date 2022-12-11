@@ -1,0 +1,7 @@
+{
+  "source_directories": [
+    "."
+  ],
+  "site_package_search_strategy": "pep561",
+  "strict": true
+}

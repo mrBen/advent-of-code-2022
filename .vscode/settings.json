@@ -21,8 +21,9 @@
     // black
     "--max-line-length=88",
     // https://google.github.io/styleguide/pyguide.html
-    // "--variable-rgx=^[a-z][a-z0-9_]*$",
-    // "--argument-rgx=^[a-z][a-z0-9_]*$"
+    "--variable-rgx=^[a-z][a-z0-9_]*$",
+    "--attr-rgx=^[a-z][a-z0-9_]*$",
+    "--argument-rgx=^[a-z][a-z0-9_]*$"
   ],
   "python.linting.pylintEnabled": true,
 }

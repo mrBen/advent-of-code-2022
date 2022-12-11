@@ -9,6 +9,7 @@ name = "pypi"
 black = "*"
 mypy = "*"
 pylint = "*"
+pyre-check = "*"
 
 [requires]
 python_version = "3.9"

@@ -42,9 +42,9 @@ def main(terminal: str) -> None:
             try:
                 cwd.files[name] = File(int(size), cwd)
             except ValueError:
-                dir = Dir(cwd)
-                dirs.append(dir)
-                cwd.dirs[name] = dir
+                directory = Dir(cwd)
+                dirs.append(directory)
+                cwd.dirs[name] = directory
 
     print("Part One:")
     print(sum(dir.size for dir in dirs if dir.size <= 100_000))
