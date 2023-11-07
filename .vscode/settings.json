@@ -26,4 +26,5 @@
     "--argument-rgx=^[a-z][a-z0-9_]*$"
   ],
   "python.linting.pylintEnabled": true,
+  "python.languageServer": "None",
 }
